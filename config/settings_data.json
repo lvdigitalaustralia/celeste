@@ -1,5 +1,20 @@
 {
-  "current": "Default",
+  "current": {
+    "sections": {
+      "hero-section": {
+        "type": "hero",
+        "settings": {}
+      },
+      "hero-section-duplicate": {
+        "type": "hero",
+        "settings": {}
+      }
+    },
+    "content_for_index": [
+      "hero-section",
+      "hero-section-duplicate"
+    ]
+  },
   "presets": {
     "Default": { }
   }

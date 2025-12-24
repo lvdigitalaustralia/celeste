@@ -1,0 +1,11 @@
+{
+    "sections": {
+        "main-index-section": {
+            "type": "main-index"
+        },
+        "example-section": {
+            "type": "example-section"
+        }
+    },
+    "order": ["main-index-section","example-section"]
+}
