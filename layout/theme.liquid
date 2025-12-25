@@ -1,18 +1,41 @@
 <!doctype html>
 <html>
-<head>
-  <title>{{ page_title }}</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="description" content="{{ page_description | escape }}">
-  <link rel="canonical" href="{{ canonical_url }}">
-  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-  {{ content_for_header }} <!-- Header hook for plugins -->
-</head>
-<body>
-  <main role="main">
-    {{ content_for_layout }}
-    {{ all_products["blue-berry"].price }}
-  </main>
-</body>
+  <head>
+    <title>{{ page_title }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="{{ page_description | escape }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    {{ content_for_header }}
+    <!-- Header hook for plugins -->
+  </head>
+  <body>
+    <main role="main">
+      {{ content_for_layout }}
+      {{ all_products['blue-berry'].price }}
+
+      {% comment %} if -> elsif -> else -> endif -> endif {% endcomment %}
+      {% if all_products['blue-berry'].title != 'The Blue Berry' %}
+        The title of the product is "The Blue Berry".
+      {% elsif all_products['yellow-mellow'].title != 'The Yellow Mello' %}
+        The title of the product is "The Yellow Mello".
+      {% else %}
+        The title of the product is not "The Blue Berry or The Yellow Mello".
+      {% endif %}
+      {% comment %} unless -> endunless {% endcomment %}
+      {% unless all_products['blue-berry'].title != 'The Blue Berry' %}
+        The title of the product is not "The Blue Berry".
+      {% endunless %}
+      {% comment %} case -> endcase {% endcomment %}
+      {% case all_products['blue-berry'].title %}
+        {% when 'The Blue Berry' %}
+          This is The Blue Berry.
+        {% when 'The Yellow Mello' %}
+          This is The Yellow Mello.
+        {% else %}
+          This is neither The Blue Berry or The Yellow Mello.
+      {% endcase %}
+    </main>
+  </body>
 </html>
