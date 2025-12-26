@@ -13,29 +13,64 @@
   <body>
     <main role="main">
       {{ content_for_layout }}
+
       {{ all_products['blue-berry'].price }}
+      <br>
 
       {% comment %} if -> elsif -> else -> endif -> endif {% endcomment %}
       {% if all_products['blue-berry'].title != 'The Blue Berry' %}
         The title of the product is "The Blue Berry".
+        <br>
       {% elsif all_products['yellow-mellow'].title != 'The Yellow Mello' %}
         The title of the product is "The Yellow Mello".
+        <br>
       {% else %}
         The title of the product is not "The Blue Berry or The Yellow Mello".
+        <br>
       {% endif %}
+
       {% comment %} unless -> endunless {% endcomment %}
       {% unless all_products['blue-berry'].title != 'The Blue Berry' %}
         The title of the product is not "The Blue Berry".
+        <br>
       {% endunless %}
+
       {% comment %} case -> endcase {% endcomment %}
       {% case all_products['blue-berry'].title %}
         {% when 'The Blue Berry' %}
           This is The Blue Berry.
+          <br>
         {% when 'The Yellow Mello' %}
           This is The Yellow Mello.
+          <br>
         {% else %}
           This is neither The Blue Berry or The Yellow Mello.
+          <br>
       {% endcase %}
+
+      {% comment %} for {% endcomment %}
+      {% for index in (1..100) %}
+        {{ index }}
+      {% endfor %}
+      <br>
+
+      {% comment %} for -> forloop {% endcomment %}
+      {% for index in (1..100) %}
+        <p id="paragraph-{{ forloop.index0 }}">Paragraph: {{ forloop.index0 }}</p>
+      {% endfor %}
+      <br>
+
+      {% comment %} cycle {% endcomment %}
+
+      {% for index in (1..100) %}
+        {% cycle 'first', 'second', 'third', 'fourth', 'fifth' %}
+      {% endfor %}
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
     </main>
   </body>
 </html>
