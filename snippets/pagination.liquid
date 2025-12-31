@@ -1,0 +1,19 @@
+{% if pagination_variable.pages > 1 %}
+    <div class="pagination">
+      {% if pagination_variable.previous.is_link %}
+        <a href="{{ pagination_variable.previous.url }}">
+          {{ pagination_variable.previous.title }}
+        </a>
+      {% endif %}
+
+      {% for page in pagination_variable.parts %}
+        <a href="{{ page.url }}">{{ page.title }}</a>
+      {% endfor %}
+
+      {% if pagination_variable.next.is_link %}
+        <a href="{{ pagination_variable.next.url }}">
+          {{ pagination_variable.next.title }}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
