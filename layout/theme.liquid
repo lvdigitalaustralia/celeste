@@ -9,16 +9,21 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     {{ content_for_header }}
     <!-- Header hook for plugins -->
+    <link href="{{ 'stylesheet.css' | asset_url }}" rel="stylesheet">
+    <link href="{{ 'theme.css' | asset_url }}" rel="stylesheet">
   </head>
   <body>
+    {% section 'header' %}
     <main role="main">
+
       {{ content_for_layout }}
 
-      {{ all_products['blue-berry'].price }}
-      <br>
+      {% comment %} {{ all_products['blue-berry'].price }}
+
+      <br> {% endcomment %}
 
       {% comment %} if -> elsif -> else -> endif -> endif {% endcomment %}
-      {% if all_products['blue-berry'].title != 'The Blue Berry' %}
+      {% comment %} {% if all_products['blue-berry'].title != 'The Blue Berry' %}
         The title of the product is "The Blue Berry".
         <br>
       {% elsif all_products['yellow-mellow'].title != 'The Yellow Mello' %}
@@ -27,16 +32,16 @@
       {% else %}
         The title of the product is not "The Blue Berry or The Yellow Mello".
         <br>
-      {% endif %}
+      {% endif %} {% endcomment %}
 
       {% comment %} unless -> endunless {% endcomment %}
-      {% unless all_products['blue-berry'].title != 'The Blue Berry' %}
+      {% comment %} {% unless all_products['blue-berry'].title != 'The Blue Berry' %}
         The title of the product is not "The Blue Berry".
         <br>
-      {% endunless %}
+      {% endunless %} {% endcomment %}
 
       {% comment %} case -> endcase {% endcomment %}
-      {% case all_products['blue-berry'].title %}
+      {% comment %} {% case all_products['blue-berry'].title %}
         {% when 'The Blue Berry' %}
           This is The Blue Berry.
           <br>
@@ -46,31 +51,32 @@
         {% else %}
           This is neither The Blue Berry or The Yellow Mello.
           <br>
-      {% endcase %}
+      {% endcase %} {% endcomment %}
 
       {% comment %} for {% endcomment %}
-      {% for index in (1..100) %}
+      {% comment %} {% for index in (1..100) %}
         {{ index }}
       {% endfor %}
-      <br>
+      <br> {% endcomment %}
 
       {% comment %} for -> forloop {% endcomment %}
-      {% for index in (1..100) %}
+      {% comment %} {% for index in (1..100) %}
         <p id="paragraph-{{ forloop.index0 }}">Paragraph: {{ forloop.index0 }}</p>
       {% endfor %}
-      <br>
+      <br> {% endcomment %}
 
       {% comment %} cycle {% endcomment %}
-
-      {% for index in (1..100) %}
+      {% comment %} {% for index in (1..100) %}
         {% cycle 'first', 'second', 'third', 'fourth', 'fifth' %}
       {% endfor %}
+      <br>
+      <br>
+      <br>
+      <br>
+      <br> {% endcomment %}
 
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+      <img src="{{ 'LVDigitalLogoSquare.png' | asset_url }}" width="100%">
+
     </main>
   </body>
 </html>
