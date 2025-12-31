@@ -1,0 +1,29 @@
+<ul>
+  {% for link in linklists['main-menu'].links %}
+    {% if link.links != empty %}
+      <li>
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      </li>
+
+      <ul>
+        {% for childlink in link.links %}
+          <li>
+            <a href="{{ childlink.url }}">{{ childlink.title }}</a>
+          </li>
+          <ul>
+            {% for grandchildlink in childlink.links %}
+              <li>
+                <a href="{{ grandchildlink.url }}">{{ grandchildlink.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      </ul>
+
+    {% else %}
+      <li>
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
