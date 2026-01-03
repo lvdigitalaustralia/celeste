@@ -1,0 +1,53 @@
+<div class="accordion">
+  {% for block in section.blocks %}
+    {% if block.type == 'faq-block' %}
+      This is the FAQ Block.
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#{{  block.id }}"
+            aria-expanded="false"
+            aria-controls="{{ block.id }}"
+          >
+            {{  block.settings.faq_question }}
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            {{ block.settings.faq_answer }}
+          </div>
+        </div>
+      </div>
+      <!-- / accordion-item -->
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "blocks": [
+    {
+      "type": "faq-block",
+      "name": "FAQ Item",
+      "settings": [
+        {
+            "type": "text",
+            "id": "faq_question",
+            "default": "Your question",
+            "label": "Question"
+        },
+        {
+            "type": "textarea",
+            "id": "faq_answer",
+            "default": "<p><b>My answer</b></p>",
+            "label": "Answer"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
